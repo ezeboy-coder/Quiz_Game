@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { QuestionProps } from "../types/types";
 
 const Question: React.FC<QuestionProps> = ({ question, onAnswer }) => {
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
 
+  // Reset the selected choice whenever the question changes
+  useEffect(() => {
+    setSelectedChoice(null);
+  }, [question]);
+
   const handleSubmit = () => {
-    const isCorrect = selectedChoice === question.correctAnswer;
-    onAnswer(isCorrect);
+    if (selectedChoice !== null) {
+      const isCorrect = selectedChoice === question.correctAnswer;
+      onAnswer(isCorrect);
+    }
   };
 
   return (
