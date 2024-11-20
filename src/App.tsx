@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Question from "./components/Question";
-
+import Score from "./components/Score";
 import { QuestionType } from "./types/types";
 import "./index.css";
 
